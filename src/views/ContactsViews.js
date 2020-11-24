@@ -19,7 +19,7 @@ class ContactsViews extends Component {
       <>
         {this.props.isAuthenticated && (
           <>
-            {this.props.loading ? <span>loading user</span> : <UserMenu />}
+            <UserMenu />
             <ContactForm />
             {this.props.loading ? <Loader /> : <ContactList />}
             <Filter />

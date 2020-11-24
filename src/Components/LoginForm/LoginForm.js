@@ -10,6 +10,8 @@ class LoginForm extends Component {
     email: "",
     password: "",
   };
+
+
   handleOnChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
