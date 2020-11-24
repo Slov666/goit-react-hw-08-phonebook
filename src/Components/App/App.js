@@ -6,7 +6,8 @@ import routes from "../../routes";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import "animate.css/animate.css";
-import  '../../base.css'
+import { store } from "react-notifications-component";
+import "../../base.css";
 
 import Loader from "../Loader/Loader";
 import Layout from "../Layout/Layout";
@@ -14,12 +15,26 @@ import Navigation from "../Navigation/Navigation";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import PublicRoute from "../PublickRoute/PublicRoute";
 
-
-
 class App extends Component {
   componentDidMount() {
     this.props.getCurrentUser();
   }
+  openModal = () => {
+    store.addNotification({
+      title: "Error!",
+      message: "There is already a contact with this name",
+      type: "danger",
+      insert: "bottom",
+      container: "top-center",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 3000,
+        onScreen: false,
+        showIcon: true,
+      },
+    });
+  };
 
   render() {
     return (

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { contactsSelectors, contactsOperations } from "../../redux/contacts";
 import Button from "@material-ui/core/Button";
 import css from "./ContactListItem.module.css";
@@ -47,3 +48,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactListItem);
+
+ContactListItem.propTypes = {
+  name: PropTypes.string,
+  number: PropTypes.string,
+  onRemove: PropTypes.func,
+};

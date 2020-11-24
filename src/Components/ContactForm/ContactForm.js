@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { contactsOperations } from "../../redux/contacts";
+import { contactsOperations, contactsSelectors } from "../../redux/contacts";
 import css from "./ContactForm.module.css";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { store } from "react-notifications-component";
 
 class ContactForm extends Component {
   state = {
@@ -17,6 +18,28 @@ class ContactForm extends Component {
   onHandleSubmit = (e) => {
     const { name, number } = this.state;
     e.preventDefault();
+    const includes = this.props.contacts.some(
+      (contact) => contact.name === this.state.name
+    );
+
+    if (includes) {
+      store.addNotification({
+        title: "Error!",
+        message: "There is already a contact with this name",
+        type: "danger",
+        insert: "bottom",
+        container: "top-center",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 3000,
+          onScreen: false,
+          showIcon: true,
+        },
+      });
+      this.setState({ name: "", number: "" });
+      return;
+    }
     this.props.addContact(name, number);
     this.setState({ name: "", number: "" });
   };
@@ -31,7 +54,7 @@ class ContactForm extends Component {
           onChange={this.onHandleChange}
           placeholder="Type name contact"
         />
-<div className={css.inputMargin}></div>
+        <div className={css.inputMargin}></div>
         <TextField
           name="number"
           type="number"
@@ -39,7 +62,7 @@ class ContactForm extends Component {
           onChange={this.onHandleChange}
           placeholder="Type number contact"
         />
-<div className={css.inputMargin}></div>
+        <div className={css.inputMargin}></div>
         <Button variant="contained" color="primary" type="submit">
           save contact
         </Button>
@@ -47,7 +70,10 @@ class ContactForm extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  contacts: contactsSelectors.getContact(state),
+});
 
-export default connect(null, { addContact: contactsOperations.addContact })(
-  ContactForm
-);
+export default connect(mapStateToProps, {
+  addContact: contactsOperations.addContact,
+})(ContactForm);
