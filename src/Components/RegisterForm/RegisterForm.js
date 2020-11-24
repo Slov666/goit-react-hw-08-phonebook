@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import css from "./RegisterForm.module.css";
+import PropTypes from "prop-types";
 
 class RegisterForm extends Component {
   state = {
@@ -69,3 +70,7 @@ class RegisterForm extends Component {
 export default connect(null, { onRegister: authOperations.register })(
   RegisterForm
 );
+
+RegisterForm.propTypes = {
+  onRegister: PropTypes.func,
+};

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
+import PropTypes from "prop-types";
 import routes from "../../routes";
 import { authSelectors } from "../../redux/auth";
 
@@ -26,3 +27,8 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(PublicRouter);
+
+PublicRouter.propTyps = {
+  isAuthenticated: PropTypes.node,
+  Component: PropTypes.node,
+};

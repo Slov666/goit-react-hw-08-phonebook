@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { authSelectors, authOperations } from "../../redux/auth";
 import css from "./UserMenu.module.css";
 import Button from "@material-ui/core/Button";
+import PropTypes from "prop-types";
+
 function UserMenu({ name, onLogout }) {
   return (
     <>
@@ -29,3 +31,8 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, { onLogout: authOperations.logOut })(
   UserMenu
 );
+
+UserMenu.propTypes = {
+  onLogout: PropTypes.func.isRequired,
+  name: PropTypes.string,
+};

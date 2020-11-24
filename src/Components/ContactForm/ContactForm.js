@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { contactsOperations, contactsSelectors } from "../../redux/contacts";
+import PropTypes from "prop-types";
 import css from "./ContactForm.module.css";
+
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { store } from "react-notifications-component";
@@ -77,3 +79,8 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   addContact: contactsOperations.addContact,
 })(ContactForm);
+
+ContactForm.propTypes = {
+  contacts: PropTypes.array,
+  addContact: PropTypes.func,
+};

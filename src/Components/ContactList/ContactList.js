@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import ContactListItem from "../ContactListItem/ContactListItem";
 import { contactsSelectors } from "../../redux/contacts";
+import PropTypes from "prop-types";
 
 function ContactList({ contacts }) {
   return (
@@ -18,3 +19,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(ContactList);
+
+ContactList.propTypes = {
+  contacts: PropTypes.array,
+};

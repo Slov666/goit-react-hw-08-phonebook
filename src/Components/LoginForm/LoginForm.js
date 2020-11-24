@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { authOperations } from "../../redux/auth";
+import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import css from "./LoginForm.module.css";
@@ -54,3 +55,7 @@ class LoginForm extends Component {
   }
 }
 export default connect(null, { onLogin: authOperations.logIn })(LoginForm);
+
+LoginForm.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+};

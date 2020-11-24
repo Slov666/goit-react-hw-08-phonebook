@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { contactsActions, contactsSelectors } from "../../redux/contacts";
 import css from "./Filter.module.css";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
@@ -38,3 +39,8 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, { onFilter: contactsActions.filter })(
   Filter
 );
+
+Filter.propTypes = {
+  filter: PropTypes.string,
+  onFilter: PropTypes.func,
+};

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 import { authSelectors } from "../../redux/auth";
 import css from "./Navigation.module.css";
 
@@ -29,3 +30,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Navigation);
+
+Navigation.propTypes = {
+  isAuthenticated: PropTypes.node,
+};

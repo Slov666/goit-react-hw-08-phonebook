@@ -8,6 +8,7 @@ import "react-notifications-component/dist/theme.css";
 import "animate.css/animate.css";
 import { store } from "react-notifications-component";
 import "../../base.css";
+import PropTypes from "prop-types";
 
 import Loader from "../Loader/Loader";
 import Layout from "../Layout/Layout";
@@ -61,3 +62,7 @@ export default connect(null, {
   getCurrentUser: authOperations.getCurrentUser,
   isAuthenticated: authSelectors.isAuthenticated,
 })(App);
+
+App.propTypes = {
+  getCurrentUser: PropTypes.func.isRequired,
+};
