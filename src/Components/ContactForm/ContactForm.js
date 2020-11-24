@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { contactsOperations } from "../../redux/contacts";
+import css from "./ContactForm.module.css";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 class ContactForm extends Component {
   state = {
@@ -20,28 +23,26 @@ class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.onHandleSubmit}>
-        <label>
-          Name:
-          <input
-            name="name"
-            type="text"
-            value={name}
-            onChange={this.onHandleChange}
-            placeholder="Type name contact"
-          />
-        </label>
-        <label>
-          Number
-          <input
-            name="number"
-            type="number"
-            value={number}
-            onChange={this.onHandleChange}
-            placeholder="Type number contact"
-          />
-        </label>
-        <button type="submit">save contact</button>
+      <form className={css.form} onSubmit={this.onHandleSubmit}>
+        <TextField
+          name="name"
+          type="text"
+          value={name}
+          onChange={this.onHandleChange}
+          placeholder="Type name contact"
+        />
+<div className={css.inputMargin}></div>
+        <TextField
+          name="number"
+          type="number"
+          value={number}
+          onChange={this.onHandleChange}
+          placeholder="Type number contact"
+        />
+<div className={css.inputMargin}></div>
+        <Button variant="contained" color="primary" type="submit">
+          save contact
+        </Button>
       </form>
     );
   }

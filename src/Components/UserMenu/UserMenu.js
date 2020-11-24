@@ -1,17 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
 import { authSelectors, authOperations } from "../../redux/auth";
+import css from "./UserMenu.module.css";
+import Button from "@material-ui/core/Button";
 function UserMenu({ name, onLogout }) {
   return (
     <>
-      <div>
-        <p>
-          Welcome <span>{name}</span>
+      <div className={css.div}>
+        <p className={css.welcome}>
+          Welcome, <span className={css.name}>{name}</span>
         </p>
+        <Button
+          variant="outlined"
+          color="primary"
+          type="button"
+          onClick={onLogout}
+        >
+          Logout
+        </Button>
       </div>
-      <button type="button" onClick={onLogout}>
-        Logout
-      </button>
     </>
   );
 }

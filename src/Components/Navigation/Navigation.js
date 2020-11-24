@@ -8,15 +8,15 @@ function Navigation({ isAuthenticated }) {
   return (
     <nav className={css.nav}>
       {isAuthenticated ? (
-        <NavLink classNames={css.link} to="/contacts">
-          test contacts
+        <NavLink className={css.link} to="/contacts">
+          Your contacts
         </NavLink>
       ) : (
         <>
-          <NavLink classNames={css.link} to="/register">
+          <NavLink className={css.link} to="/register">
             Register
           </NavLink>
-          <NavLink classNames={css.link} to="/login">
+          <NavLink className={css.link} to="/login">
             Login
           </NavLink>
         </>

@@ -32,7 +32,7 @@ const register = (credentials) => (dispatch) => {
         message: "User with the same email already exists!",
         type: "danger",
         insert: "bottom",
-        container: "top-right",
+        container: "top-center",
         animationIn: ["animate__animated", "animate__fadeIn"],
         animationOut: ["animate__animated", "animate__fadeOut"],
         dismiss: {
@@ -61,7 +61,7 @@ const logIn = (credentials) => (dispatch) => {
         message: "Invalid email or password!",
         type: "danger",
         insert: "bottom",
-        container: "top-right",
+        container: "top-center",
         animationIn: ["animate__animated", "animate__fadeIn"],
         animationOut: ["animate__animated", "animate__fadeOut"],
         dismiss: {
